@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: tarificateur-sectorem
+    env: python
+    region: frankfurt
+    plan: free
+    branch: main
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: LUXIOR_ID
+        value: "443402"
+      - key: AMI3F_ID
+        value: "9133"
+      - key: ODOO_API_KEY
+        sync: false
+      - key: PYTHON_VERSION
+        value: "3.11.0"
